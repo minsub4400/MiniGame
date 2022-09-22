@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
 {
     // 아이템 획득하면 담을 리스트
     public List<Item> items = new List<Item>();
-
+    private bool isPIP = false;
     public Slot[] slots;
 
     public void AddItem()
@@ -32,5 +32,11 @@ public class Inventory : MonoBehaviour
             slots[i].UpdateSlotUI(i);
         }
         //Debug.Log($"{slots[0].item.itemName}");
+    }
+    public void OpenInvetory()
+    {
+        Debug.Log("인벤토리 켜져라");
+        isPIP = !isPIP;
+        gameObject.SetActive(isPIP);
     }
 }

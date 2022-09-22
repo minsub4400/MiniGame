@@ -11,7 +11,7 @@ public class PlayerInput : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
-        _playerCamera = GetComponent<PlayerCamera>();
+        
     }
 
     // Update is called once per frame

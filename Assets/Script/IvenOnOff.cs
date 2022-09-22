@@ -7,7 +7,7 @@ using UnityEngine;
 public class IvenOnOff : MonoBehaviour
 {
     // 인벤토리 활성 유무
-    private bool isIven = false;
+    
 
     private GameObject inventory;
 
@@ -17,17 +17,17 @@ public class IvenOnOff : MonoBehaviour
         inventory.SetActive(false);
     }
 
-    public void IvenOn()
-    {
-        isIven = !isIven;
+    //public void IvenOn()
+    //{
+    //    isIven = !isIven;
 
-        if (isIven)
-        {
-            inventory.gameObject.SetActive(true);
-        }
-        else
-        {
-            inventory.gameObject.SetActive(false);
-        }
-    }
+    //    if (isIven)
+    //    {
+    //        inventory.gameObject.SetActive(true);
+    //    }
+    //    else
+    //    {
+    //        inventory.gameObject.SetActive(false);
+    //    }
+    //}
 }
