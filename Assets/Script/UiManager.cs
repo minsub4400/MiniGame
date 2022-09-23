@@ -5,25 +5,47 @@ using UnityEngine;
 public class UiManager : MonoBehaviour
 {
     public static UiManager Instance;
+    public GameObject Inventory;
+    public GameObject GetteringUI;
+    public GameObject LodingUI;
+
+    private bool InvenKey = false;
     
 
-    private bool isPIP = false;
-
-    private void Awake()
-    {
-        
-    }
+   
 
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.B))
+        {
+            InvenKey = !InvenKey;
+            Inventory.SetActive(InvenKey);
+        }
     }
 
-    private void PIP()
+    private void Awake()
     {
-        Debug.Log("아이템 습득 중..");
-        //inventory.AddItem();
+        Instance = this;
+        GetteringUI.SetActive(false);
+
+
     }
 
-    
+    public void DeActivationGetteringUI()
+    {
+        GetteringUI.SetActive(false);
+    }
+
+    public void ActivationGetteringUI()
+    {
+        GetteringUI.SetActive(true);
+    }
+    public void LodingScreenUI()
+    {
+        LodingUI.SetActive(true);
+    }
+
+
+
+
 }

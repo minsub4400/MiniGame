@@ -5,20 +5,43 @@ using UnityEngine;
 public class InteractionUI : MonoBehaviour
 {
     public GameObject InteractionUi;
-    public PlayerInput Key;
+    public PlayerInput InputKey;
+    public GameObject[] Energys = new GameObject[4];
+    public Dictionary<string, float> EnergyTable = new Dictionary<string, float>();
+    public float[] ObjectTime = new float[4];
+    public float lt;
+
+    private void Start()
+    {
+        EnergyTable.Add("Wood", ObjectTime[0]);
+        EnergyTable.Add("HardWood", ObjectTime[1]);
+        EnergyTable.Add("Rock", ObjectTime[2]);
+        EnergyTable.Add("Diamond", ObjectTime[3]);
+    }
 
 
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == null) return;
-        if (Key.InteractionOn == false)
-        { 
-            if (other.CompareTag("Item"))
+        if (InputKey.InteractionOn == false)
+        {
+            if (other.CompareTag("Item")) //아이템이면
             {
-                
-                Debug.Log("으아아");
-                InteractionUi.SetActive(true);
 
+                InteractionUi.SetActive(true); //상호작용
+
+                for (int i = 0; i < Energys.Length; i++) // 오브젝트중에
+                {
+                    foreach (string name in EnergyTable.Keys) // 딕셔너리 스트링 , float값 저장
+                    {
+                        if (other.name == name) //오브젝트의 이름과 딕셔너리의 이름이 같으면 float값 넣어줌
+                        {
+                            lt = EnergyTable[name]; 
+                            Debug.Log($"{lt}");
+                        }
+                    }
+
+                }
             }
         }
 

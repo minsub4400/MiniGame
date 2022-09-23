@@ -7,8 +7,9 @@ public class InteractionLoding : MonoBehaviour
 {
     public PlayerInput IntertionUi;
     public Slider loding;
-    private float maxTime = 3f;
     private float elaspedTime;
+    public InteractionUI Energy;
+    public Animator _animator;
     // Start is called before the first frame update
     void Start()
     { 
@@ -17,21 +18,27 @@ public class InteractionLoding : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        Loding();
+        Loding(Energy.lt);
+        
     }
 
-    public void Loding()
+    public void Loding(float maxTime)
     {
-
+            
             elaspedTime += Time.deltaTime;
             loding.value = Mathf.Lerp(0f, 1f, elaspedTime / maxTime);
+        _animator.SetBool("Attack", true);
             if (elaspedTime >= maxTime)
             {
-                elaspedTime = 0f;
+            _animator.SetBool("Attack", false);
+            elaspedTime = 0f;
                 loding.value = 1f;
                 gameObject.SetActive(false);
             IntertionUi.InteractionOn = false;
             } 
     }
+    //void DeActive(GameObject name)
+    //{
+    //    name.name =
+    //}
 }
