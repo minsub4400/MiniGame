@@ -6,6 +6,10 @@ TagManager:
   tags:
   - collectible
   - Item
+  - Wood
+  - Diamond
+  - Hard Wood
+  - Rock
   layers:
   - Default
   - TransparentFX
