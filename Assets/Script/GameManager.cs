@@ -7,25 +7,31 @@ public class GameManager : MonoBehaviour
     public static GameManager instance;
 
     public InteractionUI objectsenser;
-    public GameObject Wood;
-    public GameObject HardWood;
-    public GameObject Rock;
-    public GameObject Diamond;
+    public GameObject WoodPref;
+    public GameObject HardPref;
+    public GameObject RockPref;
+    public GameObject DiamondPref;
     // Start is called before the first frame update
     void Start()
     {
         
     }
+    
+   
 
     // Update is called once per frame
     void Update()
     {
         
     }
+    IEnumerator DeSetActive (GameObject Energy,float DestoryTime)
+    {
+        yield return null;
 
-    //void activate(GameObject name)
-    //{
-    //    name.SetActive(false);
-    //}
+        yield return new WaitForSeconds(DestoryTime);
+        Energy.SetActive(false);
+    }
+    
+
 
 }

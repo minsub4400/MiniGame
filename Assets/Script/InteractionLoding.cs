@@ -27,9 +27,10 @@ public class InteractionLoding : MonoBehaviour
             
             elaspedTime += Time.deltaTime;
             loding.value = Mathf.Lerp(0f, 1f, elaspedTime / maxTime);
-        _animator.SetBool("Attack", true);
+            _animator.SetBool("Attack", true);
             if (elaspedTime >= maxTime)
             {
+            Energy.gameObject.SetActive(false);
             _animator.SetBool("Attack", false);
             elaspedTime = 0f;
                 loding.value = 1f;
@@ -37,8 +38,5 @@ public class InteractionLoding : MonoBehaviour
             IntertionUi.InteractionOn = false;
             } 
     }
-    //void DeActive(GameObject name)
-    //{
-    //    name.name =
-    //}
+   
 }

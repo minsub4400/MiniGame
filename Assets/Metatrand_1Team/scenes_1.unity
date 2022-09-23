@@ -225,6 +225,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 446262, guid: bf5c716dea4419148879f65f4373d70d, type: 3}
   m_PrefabInstance: {fileID: 692072297}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &204235062
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 204235064}
+  - component: {fileID: 204235063}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &204235063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204235062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3365b480304a62458f8904666f03fdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsenser: {fileID: 1288199074}
+  WoodPref: {fileID: 0}
+  HardPref: {fileID: 0}
+  RockPref: {fileID: 0}
+  DiamondPref: {fileID: 0}
+--- !u!4 &204235064
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 204235062}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 6.5040135, y: 3.3953395, z: -10.705436}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &221063908
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -286,6 +335,10 @@ PrefabInstance:
       value: Rock
       objectReference: {fileID: 0}
     - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -345,6 +398,10 @@ PrefabInstance:
     - target: {fileID: 3386813097714812233, guid: 4cac19c21726c44499d792d11447c324, type: 3}
       propertyPath: m_Name
       value: Diamond
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386813097714812233, guid: 4cac19c21726c44499d792d11447c324, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3386813097714812233, guid: 4cac19c21726c44499d792d11447c324, type: 3}
       propertyPath: m_TagString
@@ -452,6 +509,10 @@ PrefabInstance:
     - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
       propertyPath: m_Name
       value: Rock
+      objectReference: {fileID: 0}
+    - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
       propertyPath: m_TagString
@@ -1129,6 +1190,10 @@ PrefabInstance:
       value: Rock
       objectReference: {fileID: 0}
     - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -1512,6 +1577,10 @@ PrefabInstance:
       value: Rock
       objectReference: {fileID: 0}
     - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -1743,6 +1812,10 @@ PrefabInstance:
       value: Diamond
       objectReference: {fileID: 0}
     - target: {fileID: 3386813097714812233, guid: 4cac19c21726c44499d792d11447c324, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386813097714812233, guid: 4cac19c21726c44499d792d11447c324, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -1901,6 +1974,10 @@ PrefabInstance:
       value: Rock
       objectReference: {fileID: 0}
     - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -2009,6 +2086,10 @@ PrefabInstance:
       value: Rock
       objectReference: {fileID: 0}
     - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -2109,11 +2190,6 @@ Transform:
   m_Father: {fileID: 1784566882}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1110265816 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
-  m_PrefabInstance: {fileID: 586531168}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1193294273
 GameObject:
   m_ObjectHideFlags: 0
@@ -2225,7 +2301,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3877379824660330051, guid: 5f2833a663cf8604384c094f9a41757c, type: 3}
       propertyPath: m_RootOrder
-      value: 17
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3877379824660330051, guid: 5f2833a663cf8604384c094f9a41757c, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2466,11 +2542,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InteractionUi: {fileID: 1565355856}
   InputKey: {fileID: 1391399002}
-  Energys:
-  - {fileID: 1394630985}
-  - {fileID: 0}
-  - {fileID: 1110265816}
-  - {fileID: 1323608822}
+  Energy: {fileID: 0}
   ObjectTime:
   - 1
   - 0
@@ -2490,11 +2562,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0.38}
---- !u!1 &1323608822 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3386813097714812233, guid: 4cac19c21726c44499d792d11447c324, type: 3}
-  m_PrefabInstance: {fileID: 274090612}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1353701474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2612,11 +2679,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!1 &1394630985 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 105710, guid: dcdd4333ca90c224794c8a71ea3723ed, type: 3}
-  m_PrefabInstance: {fileID: 822909518}
-  m_PrefabAsset: {fileID: 0}
 --- !u!850595691 &1425137275
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -3021,6 +3083,10 @@ PrefabInstance:
       value: Rock
       objectReference: {fileID: 0}
     - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 851561660871123477, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
@@ -3265,7 +3331,7 @@ PrefabInstance:
       objectReference: {fileID: 1565355856}
     - target: {fileID: 5948330122117272671, guid: 3c5ab2b92088c91428a51c4e6bab64d2, type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 5948330122117272671, guid: 3c5ab2b92088c91428a51c4e6bab64d2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3386,13 +3452,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1896567519}
-  m_LocalRotation: {x: -0.318581, y: 0.020455012, z: -0.0069115013, w: -0.94764966}
-  m_LocalPosition: {x: 7.1913004, y: 15.477125, z: -26.628944}
+  m_LocalRotation: {x: -0.31858104, y: 0.020455018, z: -0.0069115027, w: -0.9476497}
+  m_LocalPosition: {x: 7.1913004, y: 15.477126, z: -26.628944}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 27.856, y: 0, z: 0}
 --- !u!114 &1896567523
 MonoBehaviour:
@@ -3519,6 +3585,10 @@ PrefabInstance:
     - target: {fileID: 3386813097714812233, guid: 4cac19c21726c44499d792d11447c324, type: 3}
       propertyPath: m_Name
       value: Diamond
+      objectReference: {fileID: 0}
+    - target: {fileID: 3386813097714812233, guid: 4cac19c21726c44499d792d11447c324, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3386813097714812233, guid: 4cac19c21726c44499d792d11447c324, type: 3}
       propertyPath: m_TagString
