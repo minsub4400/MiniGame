@@ -22,9 +22,9 @@ public class CountTextColor : MonoBehaviour
 
     private void Update()
     {
-        if (int.Parse(textMeshPro.text) == maxNumber)
+        /*if (int.Parse(textMeshPro.text) == maxNumber)
         {
             textColor = new Color(255f, 224f, 0f);
-        }
+        }*/
     }
 }
