@@ -15,3 +15,4 @@ MonoBehaviour:
   ItemNumber: 3
   KorName: "\uB3CC"
   EngName: Rock
+  NumberOfAcquisitions: 0

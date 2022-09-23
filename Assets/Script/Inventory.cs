@@ -8,10 +8,10 @@ public class Inventory : MonoBehaviour
     public static Inventory inventory;
 
     // 아이템 획득하면 담을 리스트
-    public List<Item> items = new List<Item>();
+    //public List<Item> items = new List<Item>();
 
     // 아이템 갯수를 담을 리스트
-    public List<Item> itemCounts = new List<Item>();
+    //public List<Item> itemCounts = new List<Item>();
 
     public Dictionary<string, int> item_dic = new Dictionary<string, int>();
 
@@ -38,10 +38,12 @@ public class Inventory : MonoBehaviour
 
     public void DrawItemUI(int itemNumber)
     {
+        //Debug.Log(slotNumber);
         slots[slotNumber].item = ItemDB.instance.itemDB[itemNumber];
         //slots[slotNumber].item = items[slotNumber];
         slots[slotNumber].UpdateSlotUI(itemNumber);
         slotNumber += 1;
         //Debug.Log($"{slots[0].item.itemName}");
+        //Debug.Log(slotNumber);
     }
 }

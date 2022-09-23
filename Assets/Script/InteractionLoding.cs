@@ -7,8 +7,10 @@ public class InteractionLoding : MonoBehaviour
 {
     public PlayerInput IntertionUi;
     public Slider loding;
-    private float maxTime = 3f;
     private float elaspedTime;
+    public InteractionUI Energy;
+    //private float maxTime = 3f;
+    public Animator _animator;
 
     // 로딩이 완료되었을 경우 확인할 변수
     public bool isLoingComplite;
@@ -25,10 +27,11 @@ public class InteractionLoding : MonoBehaviour
 
     void Update()
     {
-        Loding();
+        Loding(Energy.lt);
+        //Loding();
     }
 
-    public void Loding()
+    /*public void Loding()
     {
         elaspedTime += Time.deltaTime;
         loding.value = Mathf.Lerp(0f, 1f, elaspedTime / maxTime);
@@ -40,14 +43,32 @@ public class InteractionLoding : MonoBehaviour
             IntertionUi.InteractionOn = false;
         }
         LodingComplite();
+    }*/
+
+    public void Loding(float maxTime)
+    {
+        elaspedTime += Time.deltaTime;
+        loding.value = Mathf.Lerp(0f, 1f, elaspedTime / maxTime);
+        _animator.SetBool("Attack", true);
+        if (elaspedTime >= maxTime)
+        {
+            //Energy.gameObject.SetActive(false); <-- 이거 넣으면 채집물이 하나이상 안캐져서 임시로 주석처리함
+            _animator.SetBool("Attack", false);
+            elaspedTime = 0f;
+            loding.value = 1f;
+            gameObject.SetActive(false);
+            IntertionUi.InteractionOn = false;
+        }
+
+        if (loding.value == 1f)
+        {
+            LodingComplite();
+        }
     }
 
     // 로딩이 1이 되면 완료되었다고 게임매니저에게 알려줌
     private void LodingComplite()
     {
-        if (loding.value == 1f)
-        {
-            isLoingComplite = true;
-        }
+        isLoingComplite = true;
     }
 }

@@ -9,10 +9,6 @@ public class PlayerInput : MonoBehaviour
     public float MoveZ;
     public bool InteractionOn = false;
     // Start is called before the first frame update
-    private void Awake()
-    {
-        _playerCamera = GetComponent<PlayerCamera>();
-    }
 
     // Update is called once per frame
     void Update()
