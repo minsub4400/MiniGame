@@ -10,26 +10,28 @@ public class GameManager : MonoBehaviour
     private InteractionUI interactionUI;
 
     // 채집 게이지를 찾을 변수
-    private InteractionLoding interactionLoding;
+    private InteractionLoading interactionLoding;
 
     void Start()
     {
         inventory = FindObjectOfType<Inventory>();
-        interactionLoding = FindObjectOfType<InteractionLoding>();
+        interactionLoding = FindObjectOfType<InteractionLoading>();
         interactionUI = FindObjectOfType<InteractionUI>();
     }
 
     void Update()
     {
+         
         IndexAndGaugeComparison();
+        
     }
 
     private void IndexAndGaugeComparison()
     {
-        if (interactionLoding.isLoingComplite && interactionUI.itemNumber != -1)
+        if (interactionLoding.isLoaingComplite && interactionUI.itemNumber != -1)
         {
             InputInInven();
-            interactionLoding.isLoingComplite = false;
+            interactionLoding.isLoaingComplite = false;
         }
     }
 
@@ -40,4 +42,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("아이템 습득 중..");
         Debug.Log(interactionUI.itemNumber);
     }
+
+    
+
 }

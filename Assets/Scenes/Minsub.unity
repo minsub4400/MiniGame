@@ -846,6 +846,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 851561660873325781, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 851561660877409461, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e267d12073a676f4aa2c48abf129eea9, type: 3}
 --- !u!1 &315898485 stripped
@@ -7968,10 +7976,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IntertionUi: {fileID: 1391399002}
-  loding: {fileID: 8944445514683664299}
-  Energy: {fileID: 1288199074}
+  LoadingSlider: {fileID: 8944445514683664299}
+  Energys: {fileID: 1288199074}
   _animator: {fileID: 7478225695528523201}
-  isLoingComplite: 0
+  isLoaingComplite: 0
 --- !u!222 &8944445514947170513
 CanvasRenderer:
   m_ObjectHideFlags: 0

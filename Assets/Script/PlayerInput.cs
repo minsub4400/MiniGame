@@ -17,17 +17,8 @@ public class PlayerInput : MonoBehaviour
 
         UpdateMove();
         Interaction();
-        //InventroyKey();
-
-
     }
     
-    //private void UpdateRotate()
-    //{
-    //    float mouseX = Input.GetAxis("Mouse X");
-    //    float mouseY = Input.GetAxis("Mouse Y");
-    //    _playerCamera.UpdateRotate(mouseX, mouseY);
-    //}
 
     private void UpdateMove()
     {
@@ -48,13 +39,5 @@ public class PlayerInput : MonoBehaviour
             PlayerHUD.Instance.LodingScreenUI();
         }
         
-    }
-
-    //public void InventroyKey()
-    //{
-    //    if(Input.GetKeyDown(KeyCode.B))
-    //    {
-    //        PlayerHUD.Instance.InventoryUIOnOff();
-    //    }
-    //}
+    } 
 }

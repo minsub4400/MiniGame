@@ -8,7 +8,7 @@ public class PlayerHUD : MonoBehaviour
     public GameObject GetteringUI;
     public GameObject LodingUI;
     public GameObject InventoryUI;
-    private bool OnOff = false;
+    
     
 
     private void Awake()
@@ -32,9 +32,5 @@ public class PlayerHUD : MonoBehaviour
     {
         LodingUI.SetActive(true);
     }
-    //public void InventoryUIOnOff()
-    //{
-    //    OnOff = !OnOff;
-    //    InventoryUI.SetActive(OnOff);
-    //}
+    
 }

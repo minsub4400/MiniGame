@@ -10,6 +10,7 @@ public class InteractionUI : MonoBehaviour
     public Dictionary<string, float> EnergyTable = new Dictionary<string, float>();
     public float[] ObjectTime = new float[4];
     public float lt;
+   
 
     private void Awake()
     {
@@ -45,7 +46,7 @@ public class InteractionUI : MonoBehaviour
                 {
                     if (other.name == name) //오브젝트의 이름과 딕셔너리의 이름이 같으면 float값 넣어줌
                     {
-                        Energy = other.gameObject;
+                        
                         lt = EnergyTable[name];
                         //Debug.Log($"{lt}");
                     }
@@ -77,7 +78,6 @@ public class InteractionUI : MonoBehaviour
             Debug.Log(itemName);
         }
     }
-    
 
     private void OnTriggerExit(Collider other)
     {
