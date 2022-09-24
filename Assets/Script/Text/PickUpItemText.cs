@@ -12,7 +12,7 @@ public class PickUpItemText : MonoBehaviour
     // 데이터를 가져올 변수
     private InteractionUI interactionUI;
 
-    public string itemName;
+    public Item itemName;
     public int itemCount;
 
     void Awake()

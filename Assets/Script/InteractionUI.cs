@@ -51,7 +51,7 @@ public class InteractionUI : MonoBehaviour
     }
 
     public int randomData = 0;
-    public string itemName;
+    public Item itemName;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Diamond")
@@ -65,9 +65,9 @@ public class InteractionUI : MonoBehaviour
             itemNumber = itemData.itemData.ItemNumber;
             //Debug.Log(itemNumber);
             // 해당 채집물의 데이터를 가져온다.
-            RandomIngredient randomIngredient = other.GetComponent<RandomIngredient>();
-            randomData = randomIngredient.itemData.NumberOfAcquisitions;
-            itemName = randomIngredient.itemData.EngName;
+            //RandomIngredient randomIngredient = other.GetComponent<RandomIngredient>();
+            randomData = RandomIngredient.randomIngredient.itemData.NumberOfAcquisitions;
+            itemName = RandomIngredient.randomIngredient.itemData.item;
             //Debug.Log(randomData);
             //Debug.Log(itemName);
         }

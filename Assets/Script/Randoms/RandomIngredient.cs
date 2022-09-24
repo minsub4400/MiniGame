@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class RandomIngredient : MonoBehaviour
 {
+    public static RandomIngredient randomIngredient;
+    private void Awake()
+    {
+        randomIngredient = this;
+    }
     // 랜덤확률로 갯수를 얻는다.
     [Header("채집물 갯수")]
     // 랜덤 갯수를 저장할 변수

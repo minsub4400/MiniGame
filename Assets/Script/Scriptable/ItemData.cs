@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Item Data", menuName = "Scriptable Object/Item Data", order = int.MaxValue)]
 public class ItemData : ScriptableObject
 {
+    public Item item;
     [Header("채집물 인덱스")]
     public int ItemNumber;
 
