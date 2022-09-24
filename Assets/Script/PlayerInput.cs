@@ -8,6 +8,7 @@ public class PlayerInput : MonoBehaviour
     public float MoveX;
     public float MoveZ;
     public bool InteractionOn = false;
+    //public bool InventoryOnpen = false;
     // Start is called before the first frame update
 
     // Update is called once per frame
@@ -16,6 +17,7 @@ public class PlayerInput : MonoBehaviour
 
         UpdateMove();
         Interaction();
+        //InventroyKey();
 
 
     }
@@ -47,4 +49,12 @@ public class PlayerInput : MonoBehaviour
         }
         
     }
+
+    //public void InventroyKey()
+    //{
+    //    if(Input.GetKeyDown(KeyCode.B))
+    //    {
+    //        PlayerHUD.Instance.InventoryUIOnOff();
+    //    }
+    //}
 }

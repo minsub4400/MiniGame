@@ -24,6 +24,10 @@ public class InteractionUI : MonoBehaviour
         EnergyTable.Add("Rock", ObjectTime[2]);
         EnergyTable.Add("Diamond", ObjectTime[3]);
     }
+    private void Update()
+    {
+        Debug.Log($"Energy : {Energy}");
+    }
 
     private void OnTriggerStay(Collider other)
     {
@@ -59,8 +63,9 @@ public class InteractionUI : MonoBehaviour
                 || other.CompareTag("Hard Wood")
                 || other.CompareTag("Rock"))
         {
-            // 해당 채집물의 데이터를 가져온다.
-            ItemInfo itemData = other.GetComponent<ItemInfo>();
+            Energy = other.gameObject;
+        // 해당 채집물의 데이터를 가져온다.
+        ItemInfo itemData = other.GetComponent<ItemInfo>();
             // 해당 채집물의 인덱스를 가져온다.
             itemNumber = itemData.itemData.ItemNumber;
             Debug.Log(itemNumber);
@@ -72,6 +77,7 @@ public class InteractionUI : MonoBehaviour
             Debug.Log(itemName);
         }
     }
+    
 
     private void OnTriggerExit(Collider other)
     {

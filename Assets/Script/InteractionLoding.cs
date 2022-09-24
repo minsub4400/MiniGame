@@ -11,6 +11,8 @@ public class InteractionLoding : MonoBehaviour
     public InteractionUI Energy;
     //private float maxTime = 3f;
     public Animator _animator;
+    private float SpawnTime = 5f;
+    private float SpT;
 
     // 로딩이 완료되었을 경우 확인할 변수
     public bool isLoingComplite;
@@ -47,14 +49,17 @@ public class InteractionLoding : MonoBehaviour
 
     public void Loding(float maxTime)
     {
+        SpT+= Time.deltaTime;
         elaspedTime += Time.deltaTime;
         loding.value = Mathf.Lerp(0f, 1f, elaspedTime / maxTime);
         _animator.SetBool("Attack", true);
         if (elaspedTime >= maxTime)
         {
-            //Energy.gameObject.SetActive(false); <-- 이거 넣으면 채집물이 하나이상 안캐져서 임시로 주석처리함
+           //< --이거 넣으면 채집물이 하나이상 안캐져서 임시로 주석처리함
             _animator.SetBool("Attack", false);
             elaspedTime = 0f;
+            
+            Onoffgameobject(Energy.Energy);
             loding.value = 1f;
             gameObject.SetActive(false);
             IntertionUi.InteractionOn = false;
@@ -71,4 +76,19 @@ public class InteractionLoding : MonoBehaviour
     {
         isLoingComplite = true;
     }
+    void Onoffgameobject(GameObject Energy)
+    {
+        Energy.GetComponent<MeshCollider>().enabled = false;
+        Energy.GetComponent<MeshRenderer>().enabled = false;
+        Energy.GetComponent<BoxCollider>().enabled = false;
+        Debug.Log($"{SpT}");
+        if(SpT >= SpawnTime)
+        {
+            SpT = 0f;
+            Energy.GetComponent<MeshCollider>().enabled = true;
+            Energy.GetComponent<MeshRenderer>().enabled = true;
+            Energy.GetComponent<BoxCollider>().enabled = true;
+        }
+    }
+    
 }
