@@ -66,7 +66,6 @@ public class InteractionLoding : MonoBehaviour
         }
     }
 
-    // 로딩이 1이 되면 완료되었다고 게임매니저에게 알려줌
     private void LodingComplite()
     {
         isLoingComplite = true;

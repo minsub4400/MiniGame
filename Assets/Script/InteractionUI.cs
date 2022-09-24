@@ -63,13 +63,13 @@ public class InteractionUI : MonoBehaviour
             ItemInfo itemData = other.GetComponent<ItemInfo>();
             // 해당 채집물의 인덱스를 가져온다.
             itemNumber = itemData.itemData.ItemNumber;
-            Debug.Log(itemNumber);
+            //Debug.Log(itemNumber);
             // 해당 채집물의 데이터를 가져온다.
             RandomIngredient randomIngredient = other.GetComponent<RandomIngredient>();
             randomData = randomIngredient.itemData.NumberOfAcquisitions;
             itemName = randomIngredient.itemData.EngName;
             //Debug.Log(randomData);
-            Debug.Log(itemName);
+            //Debug.Log(itemName);
         }
     }
 

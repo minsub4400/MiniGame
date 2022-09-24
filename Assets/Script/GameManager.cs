@@ -38,6 +38,6 @@ public class GameManager : MonoBehaviour
     {
         inventory.AddItem(interactionUI.itemNumber);
         Debug.Log("아이템 습득 중..");
-        Debug.Log(interactionUI.itemNumber);
+        Debug.Log($"아이템 인덱스 : {interactionUI.itemNumber}");
     }
 }
