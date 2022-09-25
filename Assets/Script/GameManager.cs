@@ -7,25 +7,22 @@ public class GameManager : MonoBehaviour
     private Inventory inventory;
 
     // 채집 시, 트리거 엔터되면 채집물의 인덱스를 가져온다
-    private InteractionUI interactionUI;
+    public InteractionUI interactionUI;
 
+    
     // 채집 게이지를 찾을 변수
-    private InteractionLoading interactionLoding;
-
+    public InteractionLoading interactionLoding;
     void Start()
     {
         inventory = FindObjectOfType<Inventory>();
-        interactionLoding = FindObjectOfType<InteractionLoading>();
-        interactionUI = FindObjectOfType<InteractionUI>();
+        
     }
-
     void Update()
     {
          
         IndexAndGaugeComparison();
         
     }
-
     private void IndexAndGaugeComparison()
     {
         if (interactionLoding.isLoaingComplite && interactionUI.itemNumber != -1)
@@ -43,6 +40,26 @@ public class GameManager : MonoBehaviour
         Debug.Log(interactionUI.itemNumber);
     }
 
-    
+    private void Spawn()
+    {
+
+    }
+
+    private void OffRenderobject(GameObject Energy)
+    {
+        Energy.GetComponent<MeshCollider>().enabled = false;
+        Energy.GetComponent<MeshRenderer>().enabled = false;
+        Energy.GetComponent<BoxCollider>().enabled = false;
+
+    }
+
+    private void OnRenderobject(GameObject Energy)
+    {
+        Energy.GetComponent<MeshCollider>().enabled = true;
+        Energy.GetComponent<MeshRenderer>().enabled = true;
+        Energy.GetComponent<BoxCollider>().enabled = true;
+
+    }
+
 
 }

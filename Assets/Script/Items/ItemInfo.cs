@@ -6,15 +6,7 @@ public class ItemInfo : MonoBehaviour
 {
     public ItemData itemData;
 
-    private void Start()
-    {
-        //StartCoroutine(Spawn());
-    }
-
-    private void Update()
-    {
-        
-    }
+   
 
    
 }

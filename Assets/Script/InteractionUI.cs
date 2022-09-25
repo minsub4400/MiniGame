@@ -10,7 +10,7 @@ public class InteractionUI : MonoBehaviour
     public Dictionary<string, float> EnergyTable = new Dictionary<string, float>();
     public float[] ObjectTime = new float[4];
     public float lt;
-   
+
 
     private void Awake()
     {
@@ -25,38 +25,9 @@ public class InteractionUI : MonoBehaviour
         EnergyTable.Add("Rock", ObjectTime[2]);
         EnergyTable.Add("Diamond", ObjectTime[3]);
     }
-    private void Update()
-    {
-        Debug.Log($"Energy : {Energy}");
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.tag == null) return;
-        if (InputKey.InteractionOn == false)
-        {
-            if (other.CompareTag("Diamond")
-                || other.CompareTag("Wood")
-                || other.CompareTag("Hard Wood")
-                || other.CompareTag("Rock")) //아이템이면
-            {
-                InteractionUi.SetActive(true); //상호작용 오브젝트중에
-
-                foreach (string name in EnergyTable.Keys) // 딕셔너리 스트링 , float값 저장
-                {
-                    if (other.name == name) //오브젝트의 이름과 딕셔너리의 이름이 같으면 float값 넣어줌
-                    {
-                        
-                        lt = EnergyTable[name];
-                        //Debug.Log($"{lt}");
-                    }
-                }
-            }
-        }
-    }
-
     public int randomData = 0;
     public string itemName;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Diamond")
@@ -64,29 +35,56 @@ public class InteractionUI : MonoBehaviour
                 || other.CompareTag("Hard Wood")
                 || other.CompareTag("Rock"))
         {
-            Energy = other.gameObject;
-        // 해당 채집물의 데이터를 가져온다.
-        ItemInfo itemData = other.GetComponent<ItemInfo>();
-            // 해당 채집물의 인덱스를 가져온다.
-            itemNumber = itemData.itemData.ItemNumber;
-            Debug.Log(itemNumber);
+
+
             // 해당 채집물의 데이터를 가져온다.
-            RandomIngredient randomIngredient = other.GetComponent<RandomIngredient>();
-            randomData = randomIngredient.itemData.NumberOfAcquisitions;
-            itemName = randomIngredient.itemData.EngName;
+            itemNumber = other.GetComponent<RandomIngredient>().itemData.ItemNumber;
+            // 해당 채집물의 인덱스를 가져온다. 
+            
+            // 해당 채집물의 데이터를 가져온다.
+            randomData = other.GetComponent<RandomIngredient>().itemData.NumberOfAcquisitions;
+            itemName = other.GetComponent<RandomIngredient>().itemData.EngName;
             //Debug.Log(randomData);
-            Debug.Log(itemName);
+            //Debug.Log(itemName);
+            Energy = other.gameObject;
+            foreach (string name in EnergyTable.Keys) // 딕셔너리 스트링 , float값 저장
+            {
+                if (other.name == name) //오브젝트의 이름과 딕셔너리의 이름이 같으면 float값 넣어줌
+                {
+
+                    lt = EnergyTable[name];
+                    //Debug.Log($"{lt}");
+                }
+            }
         }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Diamond")
+               || other.CompareTag("Wood")
+               || other.CompareTag("Hard Wood")
+               || other.CompareTag("Rock"))
+        {
+            Debug.Log(itemNumber);
+            InteractionUi.SetActive(true);
+        }
+    }
+
+
+
+
+    //상호작용 오브젝트중에   
     private void OnTriggerExit(Collider other)
     {
-        itemNumber = -1;
         if (other.CompareTag("Diamond")
             || other.CompareTag("Wood")
             || other.CompareTag("Hard Wood")
             || other.CompareTag("Rock"))
         {
+            itemNumber = -1;
+            Energy = null;
+            InputKey.InteractionOn = false;
             InteractionUi.SetActive(false);
         }
     }
