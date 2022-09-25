@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-[CreateAssetMenu(fileName = "New Item", menuName ="New Item/item")]
-public class Item : ScriptableObject
+public enum ItemType
+{
+    Used,
+    Ingredient,
+}
+
+[System.Serializable]
+public class Item
 {
     public string itemName;
     public Sprite itemImage;
     public int itemIndex;
-    public int itemCount;
     public ItemType itemType;
-
-    public enum ItemType
-    {
-        Used,
-        Ingredient,
-    }
 
     public void Use()
     {

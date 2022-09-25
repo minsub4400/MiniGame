@@ -15,8 +15,8 @@ public class InteractionUI : MonoBehaviour
     {
         Energy = GetComponent<GameObject>();
     }
-    // 아이템의 인덱스를 저장할 변수
-    public int itemNumber = -1;
+    // 아이템의 정보를 가져왔는지 확인할 수 있는 변수
+    public bool itemInfoCheck = false;
     private void Start()
     {
         EnergyTable.Add("Wood", ObjectTime[0]);
@@ -50,32 +50,48 @@ public class InteractionUI : MonoBehaviour
         }
     }
 
-    public int randomData = 0;
-    public Item itemName;
+    public int itemIndexData;
+    public int itemRandNum;
+    public Sprite itemImageData;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Diamond")
-                || other.CompareTag("Wood")
-                || other.CompareTag("Hard Wood")
-                || other.CompareTag("Rock"))
+        if (other.tag == ("Diamond"))
         {
-            // 해당 채집물의 데이터를 가져온다.
-            ItemInfo itemData = other.GetComponent<ItemInfo>();
-            // 해당 채집물의 인덱스를 가져온다.
-            itemNumber = itemData.itemData.ItemNumber;
-            //Debug.Log(itemNumber);
-            // 해당 채집물의 데이터를 가져온다.
-            //RandomIngredient randomIngredient = other.GetComponent<RandomIngredient>();
-            randomData = RandomIngredient.randomIngredient.itemData.NumberOfAcquisitions;
-            itemName = RandomIngredient.randomIngredient.itemData.item;
-            //Debug.Log(randomData);
-            //Debug.Log(itemName);
+            DiamondInfo itemData = other.GetComponent<DiamondInfo>();
+            itemIndexData = itemData.ItemIndex;
+            itemRandNum = itemData.NumberOfAcquisitions;
+            itemImageData = itemData.spriteImage;
+            itemInfoCheck = true;
+        }
+        if (other.tag == ("Rock"))
+        {
+            RockInfo itemData = other.GetComponent<RockInfo>();
+            itemIndexData = itemData.ItemIndex;
+            itemRandNum = itemData.NumberOfAcquisitions;
+            itemImageData = itemData.spriteImage;
+            itemInfoCheck = true;
+        }
+        if (other.tag == ("Wood"))
+        {
+            WoodInfo itemData = other.GetComponent<WoodInfo>();
+            itemIndexData = itemData.ItemIndex;
+            itemRandNum = itemData.NumberOfAcquisitions;
+            itemImageData = itemData.spriteImage;
+            itemInfoCheck = true;
+        }
+        if (other.tag == ("Hard Wood"))
+        {
+            HardWoodInfo itemData = other.GetComponent<HardWoodInfo> ();
+            itemIndexData = itemData.ItemIndex;
+            itemRandNum = itemData.NumberOfAcquisitions;
+            itemImageData = itemData.spriteImage;
+            itemInfoCheck = true;
         }
     }
 
     private void OnTriggerExit(Collider other)
     {
-        itemNumber = -1;
+        itemInfoCheck = false;
         if (other.CompareTag("Diamond")
             || other.CompareTag("Wood")
             || other.CompareTag("Hard Wood")

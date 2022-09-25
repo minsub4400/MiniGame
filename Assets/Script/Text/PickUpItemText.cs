@@ -12,8 +12,8 @@ public class PickUpItemText : MonoBehaviour
     // 데이터를 가져올 변수
     private InteractionUI interactionUI;
 
-    public Item itemName;
-    public int itemCount;
+    public int itemIndex;
+    public int itemRandNum;
 
     void Awake()
     {
@@ -28,8 +28,8 @@ public class PickUpItemText : MonoBehaviour
 
     void DataUpdate()
     {
-        itemName = interactionUI.itemName;
-        itemCount = interactionUI.randomData;
-        textMeshProUGUI.text = $"{interactionUI.itemName} : {interactionUI.randomData}";
+        itemIndex = interactionUI.itemIndexData;
+        itemRandNum = interactionUI.itemRandNum;
+        textMeshProUGUI.text = $"{itemIndex} : {itemRandNum}";
     }
 }

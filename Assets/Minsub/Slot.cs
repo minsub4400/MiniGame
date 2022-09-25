@@ -6,55 +6,40 @@ using System.Linq;
 
 public class Slot : MonoBehaviour
 {
-    public Item item;
+    public Sprite itemIcon;
+    public int itemIndex;
     public int itemCount;
-    public Image itemImage;
 
-    [SerializeField]
-    private Text text_Count;
-    [SerializeField]
-    private GameObject go_ConutImage;
+    private Image itemImage;
+    public Transform itemImageSprite;
 
-    public void AddItem(Item _item, int _count = 1)
+    // 하위 오브젝트
+    private SlotImage slotImage;
+    private SlotText slotText;
+
+    private void Awake()
     {
-        item = _item;
-        itemCount = _count;
-        itemImage.sprite = item.itemImage;
+        slotImage = GetComponentInChildren<SlotImage>();
+        slotText = GetComponentInChildren<SlotText>();
 
-        go_ConutImage.SetActive(true);
-        text_Count.text = itemCount.ToString();
-
-        SetColor(1);
     }
 
-    private void SetColor(float _alpha)
+    public void UpdateSlotImageUI(Sprite _itemImage)
     {
-        Color color = itemImage.color;
-        color.a = _alpha;
-        itemImage.color = color;
+        itemIcon = _itemImage;
+        slotImage.SetImage(itemIcon);
     }
 
-    public void SetSlotCount(int _count)
+    public void UpdateSlotTextUI(int _itemCount)
     {
-        itemCount += _count;
-        text_Count.text = itemCount.ToString();
-
-        if (itemCount <= 0)
-        {
-            ClearSlot();
-        }
+        itemCount = _itemCount;
+        slotText.SetText(itemCount);
     }
-
-    private void ClearSlot()
+    /*public void RemoveSlot()
     {
         item = null;
-        itemCount = 0;
-        itemImage.sprite = null;
-        SetColor(0);
-
-        text_Count.text = "0";
-        go_ConutImage.SetActive(false);
-    }
+        itemIcon.gameObject.SetActive(false);
+    }*/
 
 
     /*public Item item;

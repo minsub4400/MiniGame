@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 3422127240728455905}
   - component: {fileID: 3409715232960378745}
   - component: {fileID: 3450782672153309121}
+  - component: {fileID: 1323608839}
   m_Layer: 0
   m_Name: Diamond_Ore
-  m_TagString: Untagged
+  m_TagString: Diamond
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3386813097714812233}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.565, y: 0, z: -6.585}
   m_LocalScale: {x: 0.19567, y: 0.19567, z: 0.19567}
   m_ConstrainProportionsScale: 0
@@ -99,9 +100,28 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300004, guid: 7e7c5a68504558b45bd9e9301d6c579b, type: 3}
+--- !u!114 &1323608839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3386813097714812233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e16ae4e6708d2fb4e902feb232649904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemIndex: 0
+  KorName: "\uB2E4\uC774\uC544\uBAAC\uB4DC"
+  EngName: Diamond
+  NumberOfAcquisitions: 0
+  min: 1
+  max: 6
+  spriteImage: {fileID: 21300000, guid: b859cbce088b2bc47a25b9d644c846b4, type: 3}
 --- !u!1001 &3388373968850148154
 PrefabInstance:
   m_ObjectHideFlags: 0

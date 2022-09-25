@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDB : MonoBehaviour
+public class ItemDatabase : MonoBehaviour
 {
-    public static ItemDB instance;
+    public static ItemDatabase instance;
     private void Awake()
     {
         instance = this;
