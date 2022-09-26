@@ -163,8 +163,21 @@ public class Inventory_new : MonoBehaviour
         }
 
         MakeAIRecipeItems();
+        if (onChangeItem != null)
+            onChangeItem.Invoke();
     }
 
+    private void Decrease()
+    {
+        for (int i = 0; i < itemsIndex.Count; i++)
+        {    // 카운트가 0인 인덱스를 찾고
+            if (itemsCount[i] == 0)
+            {
+                itemsIndex.RemoveAt(i); //인덱스를 비워준다.
+                itemsImage.RemoveAt(i); //이미지도 비워준다.
+            }
+        }
+    }
 
     public GameObject woodBoxPrefab;
     // 아이템 제작 함수
