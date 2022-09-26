@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641472, b: 0.5748181, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.4964143, b: 0.57481724, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2183,7 +2183,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 575176510}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1909746349302408335}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &575176510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2669,6 +2681,25 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 719538434}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &774619894 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 105710, guid: dcdd4333ca90c224794c8a71ea3723ed, type: 3}
+  m_PrefabInstance: {fileID: 822909518}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &774619901
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774619894}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4364316, guid: dcdd4333ca90c224794c8a71ea3723ed, type: 3}
 --- !u!4 &800401851 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 446262, guid: bf5c716dea4419148879f65f4373d70d, type: 3}
@@ -2806,7 +2837,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 13615412, guid: dcdd4333ca90c224794c8a71ea3723ed, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dcdd4333ca90c224794c8a71ea3723ed, type: 3}
 --- !u!1001 &830360190
 PrefabInstance:
@@ -3154,8 +3186,8 @@ GameObject:
   - component: {fileID: 966068451}
   - component: {fileID: 966068450}
   - component: {fileID: 966068449}
-  - component: {fileID: 966068448}
   - component: {fileID: 966068452}
+  - component: {fileID: 966068453}
   m_Layer: 0
   m_Name: HardWood
   m_TagString: Hard Wood
@@ -3163,19 +3195,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!65 &966068448
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 966068447}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &966068449
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3260,6 +3279,20 @@ MonoBehaviour:
   min: 1
   max: 6
   spriteImage: {fileID: 21300000, guid: 2e29a3e1603dbee4da76c88728ab41b1, type: 3}
+--- !u!64 &966068453
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966068447}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &969500352
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4391,9 +4424,9 @@ MonoBehaviour:
   Energy: {fileID: 0}
   ObjectTime:
   - 1
-  - 0
-  - 3
-  - 5
+  - 1
+  - 1
+  - 1
   lt: 0
   itemInfoCheck: 0
   itemIndexData: 0
@@ -6562,6 +6595,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   GetteringUI: {fileID: 820791769}
   LodingUI: {fileID: 8944445514683664309}
+  InventoryUi: {fileID: 1909746349302408335}
 --- !u!224 &5194218597535263712
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6839,9 +6873,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1564153282}
+      - m_Target: {fileID: 1909746349302408335}
         m_TargetAssemblyTypeName: IvenOnOff, Assembly-CSharp
-        m_MethodName: IvenOn
+        m_MethodName: 
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

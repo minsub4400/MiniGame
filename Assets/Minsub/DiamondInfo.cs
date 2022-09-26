@@ -22,11 +22,34 @@ public class DiamondInfo : MonoBehaviour
     [Header("¾ÆÀÌÅÛ ÀÌ¹ÌÁö")]
     public Sprite spriteImage;
 
+    private float elaspedTime;
+    private float SpawnTime = 5f;
+    private MeshCollider _meshCollider;
+    private MeshRenderer _meshRenderer;
     private int randNum;
+
+
     private void Awake()
     {
-        // ·£´ı È¹µæ °¹¼ö
         randNum = Random.Range(min, max);
         NumberOfAcquisitions = randNum;
+        _meshCollider = GetComponent<MeshCollider>();
+        _meshRenderer = GetComponent<MeshRenderer>();
+    }
+    private void Update()
+    {
+        if (!_meshCollider.enabled && !_meshRenderer.enabled)
+        {
+            elaspedTime += Time.deltaTime;
+            if (elaspedTime >= SpawnTime)
+            {
+                elaspedTime = 0f;
+                _meshCollider.enabled = true;
+                _meshRenderer.enabled = true;
+
+
+            }
+
+        }
     }
 }

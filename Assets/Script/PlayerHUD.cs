@@ -7,6 +7,9 @@ public class PlayerHUD : MonoBehaviour
     public static PlayerHUD Instance;
     public GameObject GetteringUI;
     public GameObject LodingUI;
+    public GameObject InventoryUi;
+
+    private bool inventoryOn = false;
 
     private void Awake()
     {
@@ -29,5 +32,11 @@ public class PlayerHUD : MonoBehaviour
     {
         LodingUI.SetActive(true);
     }
-    
+    public void InventoryScreenUi()
+    {
+        inventoryOn = !inventoryOn;
+        InventoryUi.SetActive(inventoryOn); 
+    }
+
+
 }

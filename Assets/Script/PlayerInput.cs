@@ -16,10 +16,11 @@ public class PlayerInput : MonoBehaviour
 
         UpdateMove();
         Interaction();
+        Intventroy();
 
 
     }
-    
+
     //private void UpdateRotate()
     //{
     //    float mouseX = Input.GetAxis("Mouse X");
@@ -34,17 +35,28 @@ public class PlayerInput : MonoBehaviour
     }
     public void Interaction()
     {
-        if(Input.GetKeyDown(KeyCode.E))
+        if (PlayerHUD.Instance.GetteringUI.activeSelf == true)
         {
- 
-            InteractionOn = true;
-            if(InteractionOn)
-            {
-                PlayerHUD.Instance.DeActivationGetteringUI();   
-            }
 
-            PlayerHUD.Instance.LodingScreenUI();
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+
+                InteractionOn = true;
+                if (InteractionOn)
+                {
+                    PlayerHUD.Instance.DeActivationGetteringUI();
+                }
+
+                PlayerHUD.Instance.LodingScreenUI();
+            }
         }
-        
+
+    }
+    public void Intventroy()
+    {
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            PlayerHUD.Instance.InventoryScreenUi();
+        }
     }
 }

@@ -28,22 +28,10 @@ public class InteractionLoding : MonoBehaviour
     void Update()
     {
         Loding(Energy.lt);
-        //Loding();
+        
     }
 
-    /*public void Loding()
-    {
-        elaspedTime += Time.deltaTime;
-        loding.value = Mathf.Lerp(0f, 1f, elaspedTime / maxTime);
-        if (elaspedTime >= maxTime)
-        {
-            elaspedTime = 0f;
-            loding.value = 1f;
-            gameObject.SetActive(false);
-            IntertionUi.InteractionOn = false;
-        }
-        LodingComplite();
-    }*/
+    
 
     public void Loding(float maxTime)
     {
@@ -57,6 +45,8 @@ public class InteractionLoding : MonoBehaviour
             elaspedTime = 0f;
             loding.value = 1f;
             gameObject.SetActive(false);
+            invisible(Energy.Energy);
+            Energy.Energy = null;
             IntertionUi.InteractionOn = false;
         }
 
@@ -69,5 +59,10 @@ public class InteractionLoding : MonoBehaviour
     private void LodingComplite()
     {
         isLoingComplite = true;
+    }
+    private void invisible(GameObject Energy)
+    {
+        Energy.GetComponent<MeshRenderer>().enabled = false;
+        Energy.GetComponent<MeshCollider>().enabled = false;
     }
 }
