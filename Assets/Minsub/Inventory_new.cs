@@ -85,6 +85,9 @@ public class Inventory_new : MonoBehaviour
         //2 : 돌
         //3 : 단단한 목재
 
+        // 목재 1, 단단한 목재 1, 돌 1이 아닐떄, 실행.
+        
+
         for (int i = 0; i < itemsIndex.Count; i++) // 리스트의 갯수 만큼 반복한다
         {   // 1. 인덱스에서 목재를 찾는다.
             if (itemsIndex[i] == 1)
@@ -96,8 +99,9 @@ public class Inventory_new : MonoBehaviour
                     HaveARecipeItemHardWood();
                     return;
                 }
-            }
-            else if (itemsCount[i] <= 1 && itemsIndex[i] != -1)
+            } // 해당 아이템의 갯수가 부족하면 true로 만드러 준다.
+            
+            if (itemsCount[i] < 2)
             {
                 Debug.Log("1");
                 lackOfMaterial = true;
@@ -126,8 +130,8 @@ public class Inventory_new : MonoBehaviour
                     //itemsCount[i] -= 1;
                     return;
                 }
-            }
-            else if (itemsCount[i] <= 1)
+            }  // 인덱스가 비워있거나 -1이고 카운트가 재료 이하 일떄,
+            if (itemsCount[i] < 2)
             {
                 Debug.Log("3");
                 lackOfMaterial = true;
@@ -162,7 +166,7 @@ public class Inventory_new : MonoBehaviour
                     //Debug.Log("제작 가능 합니다.");
                 }
             }
-            else if (itemsCount[i] <= 1)
+            if (itemsCount[i] < 2)
             {
                 Debug.Log("4");
                 lackOfMaterial = true;
@@ -224,6 +228,7 @@ public class Inventory_new : MonoBehaviour
                 }
             }
         }
+
         MakeAIRecipeItems();
         Decrease();
         if (onChangeItem != null)
