@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         //Debug.Log(interactionUI.itemRandNum);
         // 성공
         inventory_new.AddItem(interactionUI.itemIndexData, interactionUI.itemRandNum, interactionUI.itemImageData);
-        Debug.Log("아이템 습득 중..");
-        
+        PickUpItemText.instance.DataUpdate();
+        //Debug.Log("아이템 습득 중..");
     }
 }

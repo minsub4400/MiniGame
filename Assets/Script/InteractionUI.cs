@@ -53,6 +53,7 @@ public class InteractionUI : MonoBehaviour
     public int itemIndexData;
     public int itemRandNum;
     public Sprite itemImageData;
+    public string itemNameData_ko;
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == ("Diamond"))
@@ -61,6 +62,7 @@ public class InteractionUI : MonoBehaviour
             itemIndexData = itemData.ItemIndex;
             itemRandNum = itemData.NumberOfAcquisitions;
             itemImageData = itemData.spriteImage;
+            itemNameData_ko = itemData.KorName;
             itemInfoCheck = true;
         }
         if (other.tag == ("Rock"))
@@ -69,6 +71,7 @@ public class InteractionUI : MonoBehaviour
             itemIndexData = itemData.ItemIndex;
             itemRandNum = itemData.NumberOfAcquisitions;
             itemImageData = itemData.spriteImage;
+            itemNameData_ko = itemData.KorName;
             itemInfoCheck = true;
         }
         if (other.tag == ("Wood"))
@@ -77,6 +80,7 @@ public class InteractionUI : MonoBehaviour
             itemIndexData = itemData.ItemIndex;
             itemRandNum = itemData.NumberOfAcquisitions;
             itemImageData = itemData.spriteImage;
+            itemNameData_ko = itemData.KorName;
             itemInfoCheck = true;
         }
         if (other.tag == ("Hard Wood"))
@@ -85,6 +89,7 @@ public class InteractionUI : MonoBehaviour
             itemIndexData = itemData.ItemIndex;
             itemRandNum = itemData.NumberOfAcquisitions;
             itemImageData = itemData.spriteImage;
+            itemNameData_ko = itemData.KorName;
             itemInfoCheck = true;
         }
     }

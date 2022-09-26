@@ -23,6 +23,10 @@ public class Inventory_new : MonoBehaviour
     public delegate void OnSlotCountChange(int val);
     public OnSlotCountChange onSlotCountChange;
 
+    // 제작 재료 부족 알림 팝업 창 오브젝트
+    [SerializeField]
+    private GameObject lackofmaterialUIObj;
+
     public delegate void OnChangeItem();
     public OnChangeItem onChangeItem;
 
@@ -42,8 +46,14 @@ public class Inventory_new : MonoBehaviour
         inventory_new = this;
     }
 
+    private void Update()
+    {
+        Debug.Log(lackOfMaterial);
+    }
+
     void Start()
     {
+        //lackofmaterialUIObj = GameObject.Find("Canvas").transform.Find("lackofmaterialUI").GetComponent<GameObject>();
         whiteImageSprite = whiteImage.sprite;
         recipe = ItemRecipeDataBase.itemRecipeDataBase;
         inventory_ui = Inventory_UI.instance;
@@ -59,6 +69,7 @@ public class Inventory_new : MonoBehaviour
 
     // 재료 부족인지 확인 하는 변수
     public bool lackOfMaterial = false;
+
     public void HaveARecipeItemWood()
     {
         // 이건 레시피 인덱스
@@ -83,14 +94,22 @@ public class Inventory_new : MonoBehaviour
                 {
                     // 있다면 1를 차감해준다.
                     HaveARecipeItemHardWood();
-                    //itemsCount[i] -= 1;
-                    //Debug.Log(itemsCount[i]);
+                    return;
                 }
             }
-            else
+            else if (itemsCount[i] <= 1 && itemsIndex[i] != -1)
             {
+                Debug.Log("1");
                 lackOfMaterial = true;
+                lackOfMaterials();
             }
+        }
+
+        if (itemsIndex.Count == 0)
+        {
+            Debug.Log("2");
+            lackOfMaterial = true;
+            lackOfMaterials();
         }
     }
 
@@ -105,13 +124,27 @@ public class Inventory_new : MonoBehaviour
                     // 있다면 1를 차감해준다.
                     HaveARecipeItemRock();
                     //itemsCount[i] -= 1;
+                    return;
                 }
             }
-            else
+            else if (itemsCount[i] <= 1)
             {
+                Debug.Log("3");
                 lackOfMaterial = true;
+                lackOfMaterials();
             }
         }
+    }
+
+    // 재료 부족 시 띄워줄 메시지
+    private void lackOfMaterials()
+    {
+        // 재료가 부족한데 제작 버튼을 눌렀다면
+        if (inventory_new.lackOfMaterial)
+        {
+            lackofmaterialUIObj.SetActive(true);
+        }
+        lackOfMaterial = false;
     }
 
     public void HaveARecipeItemRock()
@@ -124,13 +157,16 @@ public class Inventory_new : MonoBehaviour
                 {
                     // 있다면 1를 차감해준다.
                     HaveARecipeItems();
+                    return;
                     //itemsCount[i] -= 1;
                     //Debug.Log("제작 가능 합니다.");
                 }
             }
-            else
+            else if (itemsCount[i] <= 1)
             {
+                Debug.Log("4");
                 lackOfMaterial = true;
+                lackOfMaterials();
             }
         }
     }
