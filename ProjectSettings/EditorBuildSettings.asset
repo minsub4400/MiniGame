@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Title.unity
     guid: 7d0db674cba2e9844bab6235bc716104
   - enabled: 1
-    path: Assets/Scenes/Minsub.unity
+    path: Assets/Scenes/Jaemin.unity
     guid: d5116cb4426f6f54bbf1ecbd311ed021
   - enabled: 1
     path: Assets/Scenes/Ending.unity

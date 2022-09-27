@@ -30,6 +30,7 @@ public class PlayerInput : MonoBehaviour
 
     private void UpdateMove()
     {
+
         MoveX = Input.GetAxis("Horizontal");
         MoveZ = Input.GetAxis("Vertical");
     }
