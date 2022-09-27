@@ -237,7 +237,8 @@ public class Inventory_new : MonoBehaviour
     // 아이템 제작 함수
     private void MakeAIRecipeItems()
     {
-        Instantiate(woodBoxPrefab, transform.position, transform.rotation);
+        Vector3 instantiateVector3 = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
+        Instantiate(woodBoxPrefab, instantiateVector3, transform.rotation);
     }
 
     // 제작아이템이 있는지 확인할 배열
@@ -372,19 +373,6 @@ public class Inventory_new : MonoBehaviour
                 // 아이템의 수량이 0이 아니고
                 if (itemsCount[i] != 0)
                 {
-                    // 아이템의 수량이 99보다 작으면
-                    // 수량이 99이상이 되면 수량을 99로 만들고 비어있는 슬롯에 99이상인 값 - 99를 해서 다른 빈 슬롯에 넣어준다.
-                    /*if (itemsCount[i] > 99)
-                    {
-                        int _overCount = itemsCount[i] - 99;
-                        itemsCount[i] = 99;
-                        itemsIndex.Add(_itemIndex);
-                        itemsCount.Add(_overCount);
-                        itemsImage.Add(_itemImage);
-                        if (onChangeItem != null)
-                            onChangeItem.Invoke();
-                        return true;
-                    }*/
                     if (itemsCount[i] < 99)
                     {
                         // 해당 인덱스의 카운트를 더해준다.
