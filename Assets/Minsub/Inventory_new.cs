@@ -23,6 +23,10 @@ public class Inventory_new : MonoBehaviour
     public delegate void OnSlotCountChange(int val);
     public OnSlotCountChange onSlotCountChange;
 
+    // 제작 재료 부족 알림 팝업 창 오브젝트
+    [SerializeField]
+    private GameObject lackofmaterialUIObj;
+
     public delegate void OnChangeItem();
     public OnChangeItem onChangeItem;
 
@@ -44,10 +48,11 @@ public class Inventory_new : MonoBehaviour
 
     void Start()
     {
+        //lackofmaterialUIObj = GameObject.Find("Canvas").transform.Find("lackofmaterialUI").GetComponent<GameObject>();
         whiteImageSprite = whiteImage.sprite;
         recipe = ItemRecipeDataBase.itemRecipeDataBase;
         inventory_ui = Inventory_UI.instance;
-        slotCnt = 4;
+        slotCnt = 20;
         /*Debug.Log("레시피 정보");
         Debug.Log(recipe.itemRecipe_dic.Keys.ElementAt(0));
         Debug.Log(recipe.itemRecipe_dic["나무 상자"][0]);
@@ -55,10 +60,18 @@ public class Inventory_new : MonoBehaviour
         Debug.Log(recipe.itemRecipe_dic["나무 상자"][2]);
         Debug.Log(recipe.itemRecipe_dic["나무 상자"][3]);
         Debug.Log(recipe.itemRecipe_dic["나무 상자"][4]);*/
+
+        // 슬롯 수만큼 -1로 itemIndex List 초기화
+        /*for (int i = 0; i < slotCnt; i++)
+        {
+            itemsIndex.Add(-1);
+            Debug.Log($"{i} : {itemsIndex[i]}");
+        }*/
     }
 
     // 재료 부족인지 확인 하는 변수
     public bool lackOfMaterial = false;
+
     public void HaveARecipeItemWood()
     {
         // 이건 레시피 인덱스
@@ -74,6 +87,9 @@ public class Inventory_new : MonoBehaviour
         //2 : 돌
         //3 : 단단한 목재
 
+        // 목재 1, 단단한 목재 1, 돌 1이 아닐떄, 실행.
+        
+
         for (int i = 0; i < itemsIndex.Count; i++) // 리스트의 갯수 만큼 반복한다
         {   // 1. 인덱스에서 목재를 찾는다.
             if (itemsIndex[i] == 1)
@@ -83,14 +99,16 @@ public class Inventory_new : MonoBehaviour
                 {
                     // 있다면 1를 차감해준다.
                     HaveARecipeItemHardWood();
-                    //itemsCount[i] -= 1;
-                    //Debug.Log(itemsCount[i]);
+                    return;
                 }
             }
-            else
-            {
-                lackOfMaterial = true;
-            }
+        }
+
+        // 아이템이 하나도 없을 때, 재료가 부족하다를 띄워주는 곳
+        if (itemsIndex.Count == 0)
+        {
+            lackOfMaterial = true;
+            lackOfMaterials();
         }
     }
 
@@ -105,13 +123,21 @@ public class Inventory_new : MonoBehaviour
                     // 있다면 1를 차감해준다.
                     HaveARecipeItemRock();
                     //itemsCount[i] -= 1;
+                    return;
                 }
             }
-            else
-            {
-                lackOfMaterial = true;
-            }
         }
+    }
+
+    // 재료 부족 시 띄워줄 메시지
+    private void lackOfMaterials()
+    {
+        // 재료가 부족한데 제작 버튼을 눌렀다면
+        if (inventory_new.lackOfMaterial)
+        {
+            lackofmaterialUIObj.SetActive(true);
+        }
+        lackOfMaterial = false;
     }
 
     public void HaveARecipeItemRock()
@@ -124,13 +150,10 @@ public class Inventory_new : MonoBehaviour
                 {
                     // 있다면 1를 차감해준다.
                     HaveARecipeItems();
+                    return;
                     //itemsCount[i] -= 1;
                     //Debug.Log("제작 가능 합니다.");
                 }
-            }
-            else
-            {
-                lackOfMaterial = true;
             }
         }
     }
@@ -152,7 +175,6 @@ public class Inventory_new : MonoBehaviour
                 // 만약 카운트가 0이면
                 if (itemsCount[i] == 0)
                 {
-                    Debug.Log("카운트가 0임");
                     itemsIndex[i] = -1;
                 }
             }
@@ -167,7 +189,6 @@ public class Inventory_new : MonoBehaviour
                 // 만약 카운트가 0이면
                 if (itemsCount[i] == 0)
                 {
-                    Debug.Log("카운트가 0임");
                     itemsIndex[i] = -1;
                 }
             }
@@ -183,11 +204,11 @@ public class Inventory_new : MonoBehaviour
                 // 만약 카운트가 0이면
                 if (itemsCount[i] == 0)
                 {
-                    Debug.Log("카운트가 0임");
                     itemsIndex[i] = -1;
                 }
             }
         }
+
         MakeAIRecipeItems();
         Decrease();
         if (onChangeItem != null)
@@ -216,11 +237,132 @@ public class Inventory_new : MonoBehaviour
     // 아이템 제작 함수
     private void MakeAIRecipeItems()
     {
-        Instantiate(woodBoxPrefab, transform.position, transform.rotation);
+        Vector3 instantiateVector3 = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
+        Instantiate(woodBoxPrefab, instantiateVector3, transform.rotation);
+    }
+
+    // 제작아이템이 있는지 확인할 배열
+    private bool[] haveACraftItem = new bool[4];
+    // 0 : diamond
+    // 1 : wood
+    // 2 : rock
+    // 3 : hardwood
+
+    public void CraftButton()
+    {
+        // 여기서는 제작 레시피 데이터를 가져와서 사용할거임
+        int _diamond = -1;
+        int _wood = 1;
+        int _rock = 1;
+        int _hardwood = 1;
+        HaveACraftItem(_diamond, _wood, _rock, _hardwood);
+    }
+
+    // 제작 아이템이 있는지 확인하는 함수
+    public void HaveACraftItem(int _diamond, int _wood, int _rock, int _hardwood) // 제작 버튼에서 사용
+    {
+        // 호출 되면 haveACraftItem 배열을 false로 초기화 한다.
+        for (int i = 0; i < haveACraftItem.Length; i++)
+        {
+            haveACraftItem[i] = false;
+        }
+
+        // -1인 데이터가 있으면 모두 트루로 바꾼다.
+        // 이 재료는 실제로 감소하지는 않는다.
+        if (_diamond == -1)
+        {
+            haveACraftItem[0] = true;
+        }
+        if (_wood == -1)
+        {
+            haveACraftItem[1] = true;
+        }
+        if (_rock == -1)
+        {
+            haveACraftItem[2] = true;
+        }
+        if (_hardwood == -1)
+        {
+            haveACraftItem[3] = true;
+        }
+
+        // 1. 목재 : 1, 단단한 목재 : 1, 돌 : 1 이 있는지 확인한다
+        // 제작 레시피 데이터를 가져와서 사용할건데 지금은 임시로 하드코딩한다.
+        // 인덱스가 나무면
+        for (int i = 0; i < itemsIndex.Count; i++)
+        {
+            if (itemsIndex[i] == 0 && _diamond != -1)
+            {
+                // 수량이 1 이상 있는지 확인한다.
+                if (itemsCount[i] >= _diamond)
+                {
+                    haveACraftItem[0] = true;
+                }
+                else
+                {
+                    haveACraftItem[0] = false;
+                }
+            }
+            if (itemsIndex[i] == 1 && _wood != -1)
+            {
+                // 수량이 1 이상 있는지 확인한다.
+                if (itemsCount[i] >= _wood)
+                {
+                    haveACraftItem[1] = true;
+                }
+                else
+                {
+                    haveACraftItem[1] = false;
+                }
+            }
+            if (itemsIndex[i] == 2 && _rock != -1)
+            {
+                // 수량이 1 이상 있는지 확인한다.
+                if (itemsCount[i] >= _rock)
+                {
+                    haveACraftItem[2] = true;
+                }
+                else
+                {
+                    haveACraftItem[2] = false;
+                }
+            }
+            if (itemsIndex[i] == 3 && _hardwood != -1)
+            {
+                // 수량이 1 이상 있는지 확인한다.
+                if (itemsCount[i] >= _hardwood)
+                {
+                    haveACraftItem[3] = true;
+                }
+                else
+                {
+                    haveACraftItem[3] = false;
+                }
+            }
+        }
+        // 2. 재료가 모두 있으면 HaveARecipeItemWood()를 실행한다.
+        if (haveACraftItem[0] == true
+            && haveACraftItem[1] == true
+            && haveACraftItem[2] == true
+            && haveACraftItem[3] == true)
+        {
+            HaveARecipeItemWood();
+        }
+
+        // 3. 재료가 하나라도 없으면 없다는 문구를 띄워준다.
+        for (int i = 0; i < haveACraftItem.Length; i++)
+        {
+            if (haveACraftItem[i] == false)
+            {
+                lackOfMaterial = true;
+                lackOfMaterials();
+            }
+        }
     }
 
     public bool AddItem(int _itemIndex, int _itemCount, Sprite _itemImage)
     {
+        // 아이템의 수량을 추가하는 곳
         // itemsIndex 리스트 내, 같은 인덱스가 존재하고 0이 아니고 99이하인 인덱스가 존재하면 
         // 이미지를 넣지 않고 해당 인덱스에 카운트가 +한다.
         for (int i = 0; i < itemsIndex.Count; i++)
@@ -231,27 +373,54 @@ public class Inventory_new : MonoBehaviour
                 // 아이템의 수량이 0이 아니고
                 if (itemsCount[i] != 0)
                 {
-                    // 아이템의 수량이 99보다 작으면
                     if (itemsCount[i] < 99)
                     {
                         // 해당 인덱스의 카운트를 더해준다.
                         itemsCount[i] += _itemCount;
-                        Debug.Log("돌고 있다2");
-                        Debug.Log(itemsCount[i]);
+                        //Debug.Log(itemsCount[i]);
+
+                        if (itemsCount[i] > 99)
+                        {
+                            int _overCount = itemsCount[i] - 99;
+                            itemsCount[i] = 99;
+                            itemsIndex.Add(_itemIndex);
+                            itemsCount.Add(_overCount);
+                            itemsImage.Add(_itemImage);
+                            if (onChangeItem != null)
+                                onChangeItem.Invoke();
+                            return true;
+                        }
                         inventory_ui.RedrawCountSlotUI(i);
                         return true;
+                    }
+                    else if (itemsCount[i] == 99)
+                    {
+                        // 처음 만나는 -1(빈 슬롯)에 아이템의 정보를 넣는다.
+                        for (int j = 0; j < itemsIndex.Count; j++)
+                        {
+                            if (itemsIndex[j] == -1 || itemsCount[j] == 0) // 빈 슬롯
+                            {
+                                itemsIndex.Add(_itemIndex);
+                                itemsCount.Add(_itemCount);
+                                itemsImage.Add(_itemImage);
+                                if (onChangeItem != null)
+                                    onChangeItem.Invoke();
+                                return true;
+                            }
+                        }
+
                     }
                 }
             }
         }
 
+        // 제작 후 빈 슬롯으로 만드는 곳
         // 인덱스가 -1인 곳을 먼저 아이템을 넣는다.
         for (int i = 0; i < itemsIndex.Count; i++)
         {
             // -1이면
             if (itemsIndex[i] == -1)
             {
-                Debug.Log("돌고 있다1");
                 itemsIndex[i] = _itemIndex;
                 itemsCount[i] = _itemCount;
                 itemsImage[i] = _itemImage;
@@ -271,9 +440,9 @@ public class Inventory_new : MonoBehaviour
             }
         }
 
-        if (itemsIndex.Count < SlotCnt)
+        // 새로운 아이템이 들어왔을 경우 추가하는 곳
+        if (itemsIndex.Count <= SlotCnt)
         {
-            Debug.Log("돌고 있다3");
             itemsIndex.Add(_itemIndex);
             itemsCount.Add(_itemCount);
             itemsImage.Add(_itemImage);

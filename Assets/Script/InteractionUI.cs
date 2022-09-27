@@ -50,42 +50,56 @@ public class InteractionUI : MonoBehaviour
         }
     }
 
+    // 정수 값에 맞는 사운드가 실행된다.
+    public int itemSoundNumber; // 0 : 다이아몬드, 1 : 나무, 2 : 돌, 3 : 단단한 나무
+
     public int itemIndexData;
     public int itemRandNum;
     public Sprite itemImageData;
+    public string itemNameData_ko;
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.tag);
+        Debug.Log(itemSoundNumber);
         if (other.tag == ("Diamond"))
         {
             DiamondInfo itemData = other.GetComponent<DiamondInfo>();
             itemIndexData = itemData.ItemIndex;
             itemRandNum = itemData.NumberOfAcquisitions;
             itemImageData = itemData.spriteImage;
+            itemNameData_ko = itemData.KorName;
             itemInfoCheck = true;
+            itemSoundNumber = 0;
         }
-        if (other.tag == ("Rock"))
+        else if (other.tag == ("Rock"))
         {
             RockInfo itemData = other.GetComponent<RockInfo>();
             itemIndexData = itemData.ItemIndex;
             itemRandNum = itemData.NumberOfAcquisitions;
             itemImageData = itemData.spriteImage;
+            itemNameData_ko = itemData.KorName;
             itemInfoCheck = true;
+            itemSoundNumber = 2;
         }
-        if (other.tag == ("Wood"))
+        else if (other.tag == ("Wood"))
         {
             WoodInfo itemData = other.GetComponent<WoodInfo>();
             itemIndexData = itemData.ItemIndex;
             itemRandNum = itemData.NumberOfAcquisitions;
             itemImageData = itemData.spriteImage;
+            itemNameData_ko = itemData.KorName;
             itemInfoCheck = true;
+            itemSoundNumber = 1;
         }
-        if (other.tag == ("Hard Wood"))
+        else if (other.tag == ("Hard Wood"))
         {
             HardWoodInfo itemData = other.GetComponent<HardWoodInfo> ();
             itemIndexData = itemData.ItemIndex;
             itemRandNum = itemData.NumberOfAcquisitions;
             itemImageData = itemData.spriteImage;
+            itemNameData_ko = itemData.KorName;
             itemInfoCheck = true;
+            itemSoundNumber = 3;
         }
     }
 

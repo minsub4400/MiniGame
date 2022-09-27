@@ -26,6 +26,7 @@ public class DiamondInfo : MonoBehaviour
     private float SpawnTime = 5f;
     private MeshCollider _meshCollider;
     private MeshRenderer _meshRenderer;
+    private MeshRenderer[] _myChildrenMeshRenderer;
     private int randNum;
 
 
@@ -35,6 +36,7 @@ public class DiamondInfo : MonoBehaviour
         NumberOfAcquisitions = randNum;
         _meshCollider = GetComponent<MeshCollider>();
         _meshRenderer = GetComponent<MeshRenderer>();
+        _myChildrenMeshRenderer = GetComponentsInChildren<MeshRenderer>();
     }
     private void Update()
     {
@@ -47,7 +49,10 @@ public class DiamondInfo : MonoBehaviour
                 _meshCollider.enabled = true;
                 _meshRenderer.enabled = true;
 
-
+                for (int i = 0; i < _myChildrenMeshRenderer.Length; i++)
+                {
+                    _myChildrenMeshRenderer[i].enabled = true;
+                }
             }
 
         }
