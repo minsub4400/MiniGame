@@ -46,11 +46,6 @@ public class Inventory_new : MonoBehaviour
         inventory_new = this;
     }
 
-    private void Update()
-    {
-        Debug.Log(lackOfMaterial);
-    }
-
     void Start()
     {
         //lackofmaterialUIObj = GameObject.Find("Canvas").transform.Find("lackofmaterialUI").GetComponent<GameObject>();
