@@ -52,7 +52,7 @@ public class Inventory_new : MonoBehaviour
         whiteImageSprite = whiteImage.sprite;
         recipe = ItemRecipeDataBase.itemRecipeDataBase;
         inventory_ui = Inventory_UI.instance;
-        slotCnt = 4;
+        slotCnt = 20;
         /*Debug.Log("레시피 정보");
         Debug.Log(recipe.itemRecipe_dic.Keys.ElementAt(0));
         Debug.Log(recipe.itemRecipe_dic["나무 상자"][0]);
@@ -60,6 +60,13 @@ public class Inventory_new : MonoBehaviour
         Debug.Log(recipe.itemRecipe_dic["나무 상자"][2]);
         Debug.Log(recipe.itemRecipe_dic["나무 상자"][3]);
         Debug.Log(recipe.itemRecipe_dic["나무 상자"][4]);*/
+
+        // 슬롯 수만큼 -1로 itemIndex List 초기화
+        /*for (int i = 0; i < slotCnt; i++)
+        {
+            itemsIndex.Add(-1);
+            Debug.Log($"{i} : {itemsIndex[i]}");
+        }*/
     }
 
     // 재료 부족인지 확인 하는 변수
@@ -100,7 +107,6 @@ public class Inventory_new : MonoBehaviour
         // 아이템이 하나도 없을 때, 재료가 부족하다를 띄워주는 곳
         if (itemsIndex.Count == 0)
         {
-            Debug.Log("아이템이 하나도 없을 경우");
             lackOfMaterial = true;
             lackOfMaterials();
         }
@@ -286,7 +292,6 @@ public class Inventory_new : MonoBehaviour
         {
             if (itemsIndex[i] == 0 && _diamond != -1)
             {
-                Debug.Log("다이아몬드");
                 // 수량이 1 이상 있는지 확인한다.
                 if (itemsCount[i] >= _diamond)
                 {
@@ -356,6 +361,7 @@ public class Inventory_new : MonoBehaviour
 
     public bool AddItem(int _itemIndex, int _itemCount, Sprite _itemImage)
     {
+        // 아이템의 수량을 추가하는 곳
         // itemsIndex 리스트 내, 같은 인덱스가 존재하고 0이 아니고 99이하인 인덱스가 존재하면 
         // 이미지를 넣지 않고 해당 인덱스에 카운트가 +한다.
         for (int i = 0; i < itemsIndex.Count; i++)
@@ -367,26 +373,66 @@ public class Inventory_new : MonoBehaviour
                 if (itemsCount[i] != 0)
                 {
                     // 아이템의 수량이 99보다 작으면
+                    // 수량이 99이상이 되면 수량을 99로 만들고 비어있는 슬롯에 99이상인 값 - 99를 해서 다른 빈 슬롯에 넣어준다.
+                    /*if (itemsCount[i] > 99)
+                    {
+                        int _overCount = itemsCount[i] - 99;
+                        itemsCount[i] = 99;
+                        itemsIndex.Add(_itemIndex);
+                        itemsCount.Add(_overCount);
+                        itemsImage.Add(_itemImage);
+                        if (onChangeItem != null)
+                            onChangeItem.Invoke();
+                        return true;
+                    }*/
                     if (itemsCount[i] < 99)
                     {
                         // 해당 인덱스의 카운트를 더해준다.
                         itemsCount[i] += _itemCount;
-                        Debug.Log("돌고 있다2");
-                        Debug.Log(itemsCount[i]);
+                        //Debug.Log(itemsCount[i]);
+
+                        if (itemsCount[i] > 99)
+                        {
+                            int _overCount = itemsCount[i] - 99;
+                            itemsCount[i] = 99;
+                            itemsIndex.Add(_itemIndex);
+                            itemsCount.Add(_overCount);
+                            itemsImage.Add(_itemImage);
+                            if (onChangeItem != null)
+                                onChangeItem.Invoke();
+                            return true;
+                        }
                         inventory_ui.RedrawCountSlotUI(i);
                         return true;
+                    }
+                    else if (itemsCount[i] == 99)
+                    {
+                        // 처음 만나는 -1(빈 슬롯)에 아이템의 정보를 넣는다.
+                        for (int j = 0; j < itemsIndex.Count; j++)
+                        {
+                            if (itemsIndex[j] == -1 || itemsCount[j] == 0) // 빈 슬롯
+                            {
+                                itemsIndex.Add(_itemIndex);
+                                itemsCount.Add(_itemCount);
+                                itemsImage.Add(_itemImage);
+                                if (onChangeItem != null)
+                                    onChangeItem.Invoke();
+                                return true;
+                            }
+                        }
+
                     }
                 }
             }
         }
 
+        // 제작 후 빈 슬롯으로 만드는 곳
         // 인덱스가 -1인 곳을 먼저 아이템을 넣는다.
         for (int i = 0; i < itemsIndex.Count; i++)
         {
             // -1이면
             if (itemsIndex[i] == -1)
             {
-                Debug.Log("돌고 있다1");
                 itemsIndex[i] = _itemIndex;
                 itemsCount[i] = _itemCount;
                 itemsImage[i] = _itemImage;
@@ -406,9 +452,9 @@ public class Inventory_new : MonoBehaviour
             }
         }
 
-        if (itemsIndex.Count < SlotCnt)
+        // 새로운 아이템이 들어왔을 경우 추가하는 곳
+        if (itemsIndex.Count <= SlotCnt)
         {
-            Debug.Log("돌고 있다3");
             itemsIndex.Add(_itemIndex);
             itemsCount.Add(_itemCount);
             itemsImage.Add(_itemImage);
