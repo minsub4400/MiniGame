@@ -1566,6 +1566,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CreftUI
       objectReference: {fileID: 0}
+    - target: {fileID: 4647206954909647395, guid: f8bb1c0249dbdf14cb16ed63cc615969, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4647206954909647420, guid: f8bb1c0249dbdf14cb16ed63cc615969, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1649,6 +1653,18 @@ PrefabInstance:
     - target: {fileID: 4647206954909647420, guid: f8bb1c0249dbdf14cb16ed63cc615969, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647206954978327267, guid: f8bb1c0249dbdf14cb16ed63cc615969, type: 3}
+      propertyPath: m_text
+      value: "\uBAA9\uC7AC :   0 / 5\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647206955242810767, guid: f8bb1c0249dbdf14cb16ed63cc615969, type: 3}
+      propertyPath: m_text
+      value: "\uB2E8\uB2E8\uD55C\uB098\uBB34 : 0 / 2\n"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647206956978722796, guid: f8bb1c0249dbdf14cb16ed63cc615969, type: 3}
+      propertyPath: m_text
+      value: "\uBCF4\uC11D : 0 / 0 (\uC784\uC2DC)"
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f8bb1c0249dbdf14cb16ed63cc615969, type: 3}
@@ -2411,10 +2427,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71bdf3903f6f524c98e1c704438c1da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  woodBox: 
-  ironBox: 
-  woodenBookshelf: 
-  ironSafe: 
+  woodBox: 050000000200000003000000
+  ironBox: 00000000000000000000000000000000
+  woodenBookshelf: 00000000000000000000000000000000
+  ironSafe: 00000000000000000000000000000000
 --- !u!4 &446604894
 Transform:
   m_ObjectHideFlags: 0

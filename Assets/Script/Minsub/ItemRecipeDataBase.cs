@@ -21,8 +21,17 @@ public class ItemRecipeDataBase : MonoBehaviour
     // [3] = Priority  : 돌
     // [4] = Priority  : 다이아몬드
 
-    // 나무 상자
-    public List<int> woodBox = new List<int>();
+    public enum ItemRecipeDataBases
+    {
+        Wood,
+        HardWood,
+        Rock,
+        Diamond,
+    }
+
+
+    // 나무 상자 목재 : 5, 단단한 목재 : 2, 돌 : 3
+    public List<int> woodBox = new List<int>(); // 3가지 재료 필요 
 
     // 철 상자
     public List<int> ironBox = new List<int>();
