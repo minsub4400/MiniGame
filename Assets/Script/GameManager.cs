@@ -7,10 +7,10 @@ public class GameManager : MonoBehaviour
     private Inventory_new inventory_new;
 
     // 채집 시, 트리거 엔터되면 채집물의 인덱스를 가져온다
-    private InteractionUI interactionUI;
+    public InteractionUI interactionUI;
 
     // 채집 게이지를 찾을 변수
-    private InteractionLoding interactionLoding;
+    public InteractionLoding interactionLoding;
 
     // 인벤토리에 들어올떄 재생할 사운드 변수
     private AudioSource inventoryGetItemSound;

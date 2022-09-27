@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class CamaraPostion : MonoBehaviour
 {
-    public PlayerInput player;
-    Vector3 camerapos;
-    private float TransformMinX = -30f;
-    private float TransformMaxX = 20.7f;
-    private float TransformMinZ = -35.7f;
-    private float TransformMaxZ = 15.7f;
-    public Transform Player;
-    float changeCameraMaxX;
 
+    public Transform Player;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,8 +16,6 @@ public class CamaraPostion : MonoBehaviour
     void Update()
     {
        
-            transform.position = new Vector3
-                (Mathf.Clamp(transform.position.x, TransformMinX, TransformMaxX), transform.position.y, Mathf.Clamp(transform.position.z, TransformMinZ, TransformMaxZ));
             transform.position = new Vector3(Player.position.x, 15.47713f, Player.position.z-7.9f);
             
 
