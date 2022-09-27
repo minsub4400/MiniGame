@@ -103,7 +103,7 @@ public class InteractionUI : MonoBehaviour
             itemImageData = itemData.spriteImage;
             itemNameData_ko = itemData.KorName;
             itemInfoCheck = true;
-            itemSoundNumber = 3;
+            itemSoundNumber = 1;
         }
     }
 

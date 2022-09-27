@@ -39,33 +39,30 @@ public class InteractionLoding : MonoBehaviour
     }
 
 
-    private AudioClip SoundClips()
+    private void SoundClips()
     {
         //채집 사운드 재생
         if (Energy.itemSoundNumber == 0)
         {
             _audioSource.clip = _diamondSound;
-            return _audioSource.clip;
         }
         else if (Energy.itemSoundNumber == 1)
         {
             _audioSource.clip = _woodSound;
-            return _audioSource.clip;
         }
         else if (Energy.itemSoundNumber == 2)
         {
             _audioSource.clip = _rockSound;
-            return _audioSource.clip;
         }
-        return null;
     }
 
     public void Loding(float maxTime)
     {
         if (loding.value == 0f)
         {
-            _audioSource.PlayOneShot(SoundClips());
+            SoundClips();
             _audioSource.loop = true;
+            _audioSource.Play();
         }
 
         elaspedTime += Time.deltaTime;

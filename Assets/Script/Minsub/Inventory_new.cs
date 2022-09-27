@@ -198,7 +198,6 @@ public class Inventory_new : MonoBehaviour
                 {
                     // 있다면 1를 차감해준다.
                     itemsCount[i] -= 1;
-
                 }
 
                 // 만약 카운트가 0이면
@@ -238,7 +237,7 @@ public class Inventory_new : MonoBehaviour
     private void MakeAIRecipeItems()
     {
         Vector3 instantiateVector3 = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
-        Instantiate(woodBoxPrefab, instantiateVector3, transform.rotation);
+        Instantiate(woodBoxPrefab, instantiateVector3, Quaternion.identity);
     }
 
     // 제작아이템이 있는지 확인할 배열
