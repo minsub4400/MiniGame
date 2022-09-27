@@ -17,6 +17,7 @@ public class PlayerInput : MonoBehaviour
         UpdateMove();
         Interaction();
         Intventroy();
+        pauseKey();
 
 
     }
@@ -58,6 +59,13 @@ public class PlayerInput : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.B))
         {
             PlayerHUD.Instance.InventoryScreenUi();
+        }
+    }
+    private void pauseKey()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            PlayerHUD.Instance.pauseUi();
         }
     }
 }

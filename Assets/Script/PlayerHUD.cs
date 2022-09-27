@@ -8,14 +8,16 @@ public class PlayerHUD : MonoBehaviour
     public GameObject GetteringUI;
     public GameObject LodingUI;
     public GameObject InventoryUi;
+    public GameObject PauseUi;
 
     private bool inventoryOn = false;
+    private bool PauseOn = false;
 
     private void Awake()
     {
         Instance = this;
         GetteringUI.SetActive(false);
-
+        PauseUi.SetActive(false);
 
     }
 
@@ -36,6 +38,19 @@ public class PlayerHUD : MonoBehaviour
     {
         inventoryOn = !inventoryOn;
         InventoryUi.SetActive(inventoryOn); 
+    }
+    public void pauseUi()
+    {
+        PauseOn = !PauseOn;
+       PauseUi.SetActive(PauseOn);
+        if(PauseOn)
+        {
+            Time.timeScale = 0f;
+        }else
+        {
+            Time.timeScale = 1f;
+        }
+        
     }
 
 

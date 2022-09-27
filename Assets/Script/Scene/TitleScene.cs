@@ -25,4 +25,8 @@ public class TitleScene : MonoBehaviour
     {
         Application.Quit();
     }
+    public void TitleButton()
+    {
+        SceneManager.LoadScene(0);
+    }
 }
