@@ -44,7 +44,14 @@ public class GameManager : MonoBehaviour
         //Debug.Log(interactionUI.itemIndexData);
         //Debug.Log(interactionUI.itemRandNum);
         // 성공
-        inventory_new.AddItem(interactionUI.itemIndexData, interactionUI.itemRandNum, interactionUI.itemImageData);
+        try
+        {
+            inventory_new.AddItem(interactionUI.itemIndexData, interactionUI.itemRandNum, interactionUI.itemImageData);
+        }
+        catch
+        {
+            Debug.Log("1");
+        }
         // 아이템이 들어 올때, 재생될 사운드
         inventoryGetItemSound.Play();
         PickUpItemText.instance.DataUpdate();

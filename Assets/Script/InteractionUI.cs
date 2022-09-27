@@ -59,8 +59,8 @@ public class InteractionUI : MonoBehaviour
     public string itemNameData_ko;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.tag);
-        Debug.Log(itemSoundNumber);
+        //Debug.Log(other.tag);
+        //Debug.Log(itemSoundNumber);
         if (other.tag == ("Diamond"))
         {
             Energy = other.gameObject;

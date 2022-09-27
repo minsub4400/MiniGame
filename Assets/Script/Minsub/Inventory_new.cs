@@ -377,7 +377,6 @@ public class Inventory_new : MonoBehaviour
                     {
                         // 해당 인덱스의 카운트를 더해준다.
                         itemsCount[i] += _itemCount;
-                        //Debug.Log(itemsCount[i]);
 
                         if (itemsCount[i] > 99)
                         {
@@ -408,7 +407,6 @@ public class Inventory_new : MonoBehaviour
                                 return true;
                             }
                         }
-
                     }
                 }
             }
