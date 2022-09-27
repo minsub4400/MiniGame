@@ -41,7 +41,7 @@ public class InteractionUI : MonoBehaviour
                 {
                     if (other.name == name) //오브젝트의 이름과 딕셔너리의 이름이 같으면 float값 넣어줌
                     {
-                        Energy = other.gameObject;
+                        
                         lt = EnergyTable[name];
                         //Debug.Log($"{lt}");
                     }
@@ -63,6 +63,7 @@ public class InteractionUI : MonoBehaviour
         Debug.Log(itemSoundNumber);
         if (other.tag == ("Diamond"))
         {
+            Energy = other.gameObject;
             DiamondInfo itemData = other.GetComponent<DiamondInfo>();
             itemIndexData = itemData.ItemIndex;
             itemRandNum = itemData.NumberOfAcquisitions;
@@ -73,6 +74,7 @@ public class InteractionUI : MonoBehaviour
         }
         else if (other.tag == ("Rock"))
         {
+            Energy = other.gameObject;
             RockInfo itemData = other.GetComponent<RockInfo>();
             itemIndexData = itemData.ItemIndex;
             itemRandNum = itemData.NumberOfAcquisitions;
@@ -83,6 +85,7 @@ public class InteractionUI : MonoBehaviour
         }
         else if (other.tag == ("Wood"))
         {
+            Energy = other.gameObject;
             WoodInfo itemData = other.GetComponent<WoodInfo>();
             itemIndexData = itemData.ItemIndex;
             itemRandNum = itemData.NumberOfAcquisitions;
@@ -93,6 +96,7 @@ public class InteractionUI : MonoBehaviour
         }
         else if (other.tag == ("Hard Wood"))
         {
+            Energy = other.gameObject;
             HardWoodInfo itemData = other.GetComponent<HardWoodInfo> ();
             itemIndexData = itemData.ItemIndex;
             itemRandNum = itemData.NumberOfAcquisitions;

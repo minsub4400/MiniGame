@@ -535,6 +535,6 @@ MonoBehaviour:
   KorName: "\uB2E4\uC774\uC544\uBAAC\uB4DC"
   EngName: Diamond
   NumberOfAcquisitions: 0
-  min: 98
-  max: 98
+  min: 1
+  max: 5
   spriteImage: {fileID: 21300000, guid: b859cbce088b2bc47a25b9d644c846b4, type: 3}
