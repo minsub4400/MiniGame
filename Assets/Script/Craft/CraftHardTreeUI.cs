@@ -14,8 +14,8 @@ public class CraftHardTreeUI : MonoBehaviour
         {   // 1. 인덱스에서 목재를 찾는다.
             if (Inventory_new.inventory_new.itemsIndex[i] == 3)
             {
-                text.text = $"단단한나무 : {Inventory_new.inventory_new.itemsCount[i]} / 3";
-                if(Inventory_new.inventory_new.itemsCount[i] >= 3)
+                text.text = $"단단한나무 : {Inventory_new.inventory_new.itemsCount[i]} / 2";
+                if(Inventory_new.inventory_new.itemsCount[i] >= 2)
                 {
                     text.color = Color.yellow;
                 }

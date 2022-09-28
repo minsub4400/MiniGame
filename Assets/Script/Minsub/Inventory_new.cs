@@ -18,6 +18,9 @@ public class Inventory_new : MonoBehaviour
 
     public static Inventory_new inventory_new;
 
+    // 나무상자 갯수 세는 변수
+    public int woodBoxCount = 0;
+
     public Image whiteImage;
     public Sprite whiteImageSprite;
     public delegate void OnSlotCountChange(int val);
@@ -165,10 +168,10 @@ public class Inventory_new : MonoBehaviour
             if (itemsIndex[i] == 1)
             {
                 // 목재가 있으면 갯수가 1이상 있는지 확인한다.
-                if (itemsCount[i] >= 1)
+                if (itemsCount[i] >= 5)
                 {
                     // 있다면 1를 차감해준다.
-                    itemsCount[i] -= 1;
+                    itemsCount[i] -= 5;
                     //Debug.Log(itemsCount[i]);
                 }
 
@@ -194,10 +197,10 @@ public class Inventory_new : MonoBehaviour
             }
             else if (itemsIndex[i] == 2)
             {    //있으면 갯수를 찾는다. 갯수가 1이상인지 확인한다.
-                if (itemsCount[i] >= 1)
+                if (itemsCount[i] >= 2)
                 {
                     // 있다면 1를 차감해준다.
-                    itemsCount[i] -= 1;
+                    itemsCount[i] -= 2;
 
                 }
 
@@ -239,6 +242,7 @@ public class Inventory_new : MonoBehaviour
     {
         Vector3 instantiateVector3 = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2);
         Instantiate(woodBoxPrefab, instantiateVector3, transform.rotation);
+        woodBoxCount++;
     }
 
     // 제작아이템이 있는지 확인할 배열

@@ -22,7 +22,7 @@ public class InteractionUI : MonoBehaviour
         EnergyTable.Add("Wood", ObjectTime[0]);
         EnergyTable.Add("HardWood", ObjectTime[1]);
         EnergyTable.Add("Rock", ObjectTime[2]);
-        EnergyTable.Add("Diamond", ObjectTime[3]);
+        //EnergyTable.Add("Diamond", ObjectTime[3]);
     }
 
     private void OnTriggerStay(Collider other)
@@ -30,8 +30,7 @@ public class InteractionUI : MonoBehaviour
         if (other.tag == null) return;
         if (InputKey.InteractionOn == false)
         {
-            if (other.CompareTag("Diamond")
-                || other.CompareTag("Wood")
+            if (other.CompareTag("Wood")
                 || other.CompareTag("Hard Wood")
                 || other.CompareTag("Rock")) //아이템이면
             {
@@ -61,7 +60,7 @@ public class InteractionUI : MonoBehaviour
     {
         //Debug.Log(other.tag);
         //Debug.Log(itemSoundNumber);
-        if (other.tag == ("Diamond"))
+        /*if (other.tag == ("Diamond"))
         {
             Energy = other.gameObject;
             DiamondInfo itemData = other.GetComponent<DiamondInfo>();
@@ -71,8 +70,8 @@ public class InteractionUI : MonoBehaviour
             itemNameData_ko = itemData.KorName;
             itemInfoCheck = true;
             itemSoundNumber = 0;
-        }
-        else if (other.tag == ("Rock"))
+        }*/
+        if (other.tag == ("Rock"))
         {
             Energy = other.gameObject;
             RockInfo itemData = other.GetComponent<RockInfo>();
@@ -110,8 +109,11 @@ public class InteractionUI : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         itemInfoCheck = false;
-        if (other.CompareTag("Diamond")
+        /*if (other.CompareTag("Diamond")
             || other.CompareTag("Wood")
+            || other.CompareTag("Hard Wood")
+            || other.CompareTag("Rock"))*/
+        if (other.CompareTag("Wood")
             || other.CompareTag("Hard Wood")
             || other.CompareTag("Rock"))
         {

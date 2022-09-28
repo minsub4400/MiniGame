@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -26,6 +27,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         IndexAndGaugeComparison();
+
+        if (inventory_new.woodBoxCount == 3)
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
     private void IndexAndGaugeComparison()

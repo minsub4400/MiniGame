@@ -14,8 +14,8 @@ public class CraftStoneUI : MonoBehaviour
         {   // 1. 인덱스에서 목재를 찾는다.
             if (Inventory_new.inventory_new.itemsIndex[i] == 2)
             {
-                text.text = $"돌 : {Inventory_new.inventory_new.itemsCount[i]} / 3";
-                if (Inventory_new.inventory_new.itemsCount[i] >= 3)
+                text.text = $"돌 : {Inventory_new.inventory_new.itemsCount[i]} / 1";
+                if (Inventory_new.inventory_new.itemsCount[i] >= 1)
                 {
                     text.color = Color.yellow;
                 }
