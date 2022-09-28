@@ -17,7 +17,7 @@ public class CraftDiamondUI : MonoBehaviour
                 text.text = $"µ¹ : {Inventory_new.inventory_new.itemsCount[i]} / 3";
                 if (Inventory_new.inventory_new.itemsCount[i] >= 3)
                 {
-                    text.color = Color.red;
+                    text.color = Color.yellow;
                 }
                 else
                 {

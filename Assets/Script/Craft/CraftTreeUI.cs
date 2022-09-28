@@ -20,7 +20,7 @@ public class CraftTreeUI : MonoBehaviour
                 text.text = $"³ª¹« : {Inventory_new.inventory_new.itemsCount[i]} / 3";
                 if (Inventory_new.inventory_new.itemsCount[i] >= 3)
                 {
-                    text.color = Color.red;
+                    text.color = Color.yellow;
                 }
                 else
                 {

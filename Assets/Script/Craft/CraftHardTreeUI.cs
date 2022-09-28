@@ -17,7 +17,7 @@ public class CraftHardTreeUI : MonoBehaviour
                 text.text = $"단단한나무 : {Inventory_new.inventory_new.itemsCount[i]} / 3";
                 if(Inventory_new.inventory_new.itemsCount[i] >= 3)
                 {
-                    text.color = Color.red;
+                    text.color = Color.yellow;
                 }
                 else
                 {
