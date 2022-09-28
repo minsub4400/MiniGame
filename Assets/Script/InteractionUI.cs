@@ -20,7 +20,7 @@ public class InteractionUI : MonoBehaviour
     private void Start()
     {
         EnergyTable.Add("Wood", ObjectTime[0]);
-        EnergyTable.Add("HardWood", ObjectTime[1]);
+        EnergyTable.Add("Hard Wood", ObjectTime[1]);
         EnergyTable.Add("Rock", ObjectTime[2]);
         //EnergyTable.Add("Diamond", ObjectTime[3]);
     }
@@ -102,7 +102,7 @@ public class InteractionUI : MonoBehaviour
             itemImageData = itemData.spriteImage;
             itemNameData_ko = itemData.KorName;
             itemInfoCheck = true;
-            itemSoundNumber = 3;
+            itemSoundNumber = 1;
         }
     }
 

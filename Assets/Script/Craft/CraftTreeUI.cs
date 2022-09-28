@@ -17,7 +17,7 @@ public class CraftTreeUI : MonoBehaviour
         {   // 1. 인덱스에서 목재를 찾는다.
             if (Inventory_new.inventory_new.itemsIndex[i] == 1)
             {
-                text.text = $"나무 : {Inventory_new.inventory_new.itemsCount[i]} / 5";
+                text.text = $"목재 : {Inventory_new.inventory_new.itemsCount[i]} / 5";
                 if (Inventory_new.inventory_new.itemsCount[i] >= 5)
                 {
                     text.color = Color.yellow;
